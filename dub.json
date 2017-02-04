@@ -1,0 +1,14 @@
+{
+	"name": "jwtcompare",
+	"authors": [
+		"burner"
+	],
+	"dependencies": {
+		"fastjwt": ">=0.0.2",
+		"jwt": ">=0.4.0",
+		"jwtd": ">=0.4.1"
+	},
+	"description": "A minimal D application.",
+	"copyright": "Copyright © 2017, burner",
+	"license": "MIT"
+}
