@@ -7,7 +7,7 @@ import std.datetime;
 
 string secret = "SuperStrongSecret";
 
-void tester(alias fun)() {
+void tester(alias fun)(string name) {
 	import core.memory;
 	auto s = Clock.currTime;
 	for(int i = 0; i < 50000; ++i) {
@@ -18,7 +18,7 @@ void tester(alias fun)() {
 	GC.minimize();
 
 	auto ss = Clock.currTime;
-	writefln("%s", ss - s);
+	writefln("%s: %s", name, ss - s);
 }
 
 void jwtTest() {
@@ -55,7 +55,7 @@ void jwtTest() {
 
 void fastjwtTest() {
 	import fastjwt.jwt;
-	import fastjwt.stringbuf;
+	import stringbuffer;
 
 	auto alg = JWTAlgorithm.HS256;
 	StringBuffer buf;
@@ -83,7 +83,7 @@ void jwtdTest() {
 }
 
 void main() {
-	tester!fastjwtTest();
-	tester!jwtTest();
-	tester!jwtdTest();
+	tester!jwtTest("jwt");
+	tester!jwtdTest("jwtd");
+	tester!fastjwtTest("fastjwt");
 }
